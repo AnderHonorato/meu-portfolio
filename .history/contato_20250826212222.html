@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato - Anderson</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- MENU -->
+    <nav class="menu">
+        <ul>
+            <li><a href="index.html">Sobre Mim</a></li>
+            <li><a href="formacao.html">Formação</a></li>
+            <li><a href="portfolio.html">Portfólio</a></li>
+            <li><a href="contato.html" class="ativo">Contato</a></li>
+        </ul>
+    </nav>
+
+    <!-- CONTEÚDO ESPECÍFICO DA PÁGINA DE CONTATO -->
+    <main class="conteudo">
+        <h1>Entre em Contato</h1>
+        
+        <p class="intro-contato">
+            Caso queira conversar sobre meus projetos ou trocar ideias sobre tecnologia, estarei à disposição para responder.
+        </p>
+        
+        <div class="contato-container">
+            <!-- FORMULÁRIO DE CONTATO -->
+            <div class="formulario-contato">
+                <h2>📩 Envie uma Mensagem</h2>
+                
+                <!-- FORMULÁRIO (APENAS VISUAL) -->
+                <form class="form-contato" id="formContato">
+                    <div class="campo">
+                        <label for="nome">Nome Completo:</label>
+                        <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required>
+                    </div>
+                    
+                    <div class="campo">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" placeholder="seu.email@exemplo.com" required>
+                    </div>
+                    
+                    <div class="campo">
+                        <label for="assunto">Assunto:</label>
+                        <select id="assunto" name="assunto" required>
+                            <option value="">Selecione o assunto</option>
+                            <option value="oportunidade">Oportunidade de Trabalho</option>
+                            <option value="projeto">Proposta de Projeto</option>
+                            <option value="duvida">Dúvida Técnica</option>
+                            <option value="networking">Networking</option>
+                            <option value="outros">Outros</option>
+                        </select>
+                    </div>
+                    
+                    <div class="campo">
+                        <label for="mensagem">Mensagem:</label>
+                        <textarea id="mensagem" name="mensagem" rows="6" placeholder="Escreva sua mensagem aqui..." required></textarea>
+                    </div>
+                    
+                    <!-- CHECKBOX DE CONFIRMAÇÃO -->
+                    <div class="campo checkbox">
+                        <input type="checkbox" id="aceite" name="aceite" required>
+                        <label for="aceite">Autorizo o uso dos meus dados para resposta do contato.</label>
+                    </div>
+                    
+                    <button type="submit" class="btn-enviar">Enviar Mensagem</button>
+                </form>
+                
+                <!-- MENSAGEM DE RETORNO (OCULTA INICIALMENTE) -->
+                <div id="mensagemRetorno" class="mensagem-retorno" style="display: none;">
+                    <p>✅ Mensagem enviada com sucesso! Retornarei o contato em breve.</p>
+                </div>
+            </div>
+            
+            <!-- INFORMAÇÕES DE CONTATO DIRETO -->
+            <div class="info-contato">
+                <h2>📞 Outras Formas de Contato</h2>
+                            
+            <div class="contato-item">
+                <h3>📧 Email</h3>
+                <p><a href="mailto:honoratoann@gmail.com">honoratoann@gmail.com</a></p>
+                <small>Geralmente respondo em até 24 horas.</small>
+            </div>
+
+            <div class="contato-item">
+                <h3>💼 LinkedIn</h3>
+                <p><a href="https://www.linkedin.com/in/anderson-honorato-867653183/" target="_blank">anderson-honorato-867653183</a></p>
+                <small>Rede profissional para conexões e oportunidades.</small>
+            </div>
+
+            <div class="contato-item">
+                <h3>🐙 GitHub</h3>
+                <p><a href="https://github.com/AnderHonorato" target="_blank">AnderHonorato</a></p>
+                <small>Portfólio de códigos e projetos em desenvolvimento.</small>
+            </div>
+
+            <div class="contato-item">
+                <h3>📱 WhatsApp</h3>
+                <p><a href="https://wa.me/5577999512937" target="_blank">(77) 99951-2937</a></p>
+                <small>Atendimento preferencial para assuntos profissionais.</small>
+            </div>
+
+                
+                <!-- HORÁRIOS DE DISPONIBILIDADE -->
+                <div class="disponibilidade">
+                    <h3>🕒 Disponibilidade</h3>
+                    <ul>
+                        <li><strong>Segunda a Sexta:</strong> 08h às 17h</li>
+                        <li><strong>Sábados:</strong> 09h às 12h</li>
+                        <li><strong>Domingos:</strong> Apenas casos urgentes.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- SEÇÃO DE DICAS DE CONTATO -->
+        <div class="dicas-contato">
+            <h2>💡 Dicas para um Bom Contato</h2>
+            <div class="dicas-grid">
+                <div class="dica-item">
+                    <h4>🎯 Seja Claro</h4>
+                    <p>Descreva seu objetivo de forma detalhada para facilitar a análise e o retorno adequado.</p>
+                </div>
+                <div class="dica-item">
+                    <h4>⏰ Prazo de Resposta</h4>
+                    <p>Respondo normalmente em até 24 horas. Para assuntos urgentes, utilize o WhatsApp.</p>
+                </div>
+                <div class="dica-item">
+                    <h4>📎 Materiais de Apoio</h4>
+                    <p>Se houver documentos ou referências, mencione no contato para envio posterior por email.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- SCRIPT DE INTERATIVIDADE DO FORMULÁRIO -->
+    <script>
+        // SIMULA O ENVIO DO FORMULÁRIO E MOSTRA MENSAGEM DE SUCESSO
+        document.getElementById('formContato').addEventListener('submit', function(e) {
+            e.preventDefault(); 
+            document.getElementById('mensagemRetorno').style.display = 'block';
+            this.reset();
+            document.getElementById('mensagemRetorno').scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
