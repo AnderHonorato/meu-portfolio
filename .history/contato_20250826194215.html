@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato - João Silva</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Menu de navegação idêntico em todas as páginas -->
+    <nav class="menu">
+        <ul>
+            <li><a href="index.html">Sobre mim</a></li>
+            <li><a href="formacao.html">Formação</a></li>
+            <li><a href="portfolio.html">Portfólio</a></li>
+            <li><a href="contato.html" class="ativo">Contato</a></li>
+        </ul>
+    </nav>
+
+    <!-- Conteúdo específico da página de contato -->
+    <main class="conteudo">
+        <h1>Entre em Contato</h1>
+        
+        <p class="intro-contato">Gostaria de conversar sobre oportunidades, projetos ou apenas trocar uma ideia sobre tecnologia? Ficarei feliz em responder!</p>
+        
+        <div class="contato-container">
+            <!-- Formulário de contato visual -->
+            <div class="formulario-contato">
+                <h2>📩 Envie uma Mensagem</h2>
+                
+                <!-- Formulário apenas visual (não funcional) -->
+                <form class="form-contato" id="formContato">
+                    <div class="campo">
+                        <label for="nome">Nome Completo:</label>
+                        <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required>
+                    </div>
+                    
+                    <div class="campo">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" placeholder="seu.email@exemplo.com" required>
+                    </div>
+                    
+                    <div class="campo">
+                        <label for="assunto">Assunto:</label>
+                        <select id="assunto" name="assunto" required>
+                            <option value="">Selecione o assunto</option>
+                            <option value="oportunidade">Oportunidade de Trabalho</option>
+                            <option value="projeto">Proposta de Projeto</option>
+                            <option value="duvida">Dúvida Técnica</option>
+                            <option value="networking">Networking</option>
+                            <option value="outros">Outros</option>
+                        </select>
+                    </div>
+                    
+                    <div class="campo">
+                        <label for="mensagem">Mensagem:</label>
+                        <textarea id="mensagem" name="mensagem" rows="6" placeholder="Escreva sua mensagem aqui..." required></textarea>
+                    </div>
+                    
+                    <!-- Checkbox de aceite -->
+                    <div class="campo checkbox">
+                        <input type="checkbox" id="aceite" name="aceite" required>
+                        <label for="aceite">Concordo em compartilhar meus dados para resposta do contato</label>
+                    </div>
+                    
+                    <button type="submit" class="btn-enviar">Enviar Mensagem</button>
+                </form>
+                
+                <!-- Mensagem de retorno (inicialmente oculta) -->
+                <div id="mensagemRetorno" class="mensagem-retorno" style="display: none;">
+                    <p>✅ Mensagem enviada com sucesso! Responderei em breve.</p>
+                </div>
+            </div>
+            
+            <!-- Informações de contato direto -->
+            <div class="info-contato">
+                <h2>📞 Outras Formas de Contato</h2>
+                
+                <div class="contato-item">
+                    <h3>📧 Email</h3>
+                    <p>joao.silva@email.com</p>
+                    <small>Respondo em até 24 horas</small>
+                </div>
+                
+                <div class="contato-item">
+                    <h3>💼 LinkedIn</h3>
+                    <p>linkedin.com/in/joaosilva</p>
+                    <small>Rede profissional</small>
+                </div>
+                
+                <div class="contato-item">
+                    <h3>🐙 GitHub</h3>
+                    <p>github.com/joaosilva</p>
+                    <small>Meus repositórios de código</small>
+                </div>
+                
+                <div class="contato-item">
+                    <h3>📱 WhatsApp</h3>
+                    <p>(11) 99999-9999</p>
+                    <small>Apenas para contatos profissionais</small>
+                </div>
+                
+                <!-- Horários de disponibilidade -->
+                <div class="disponibilidade">
+                    <h3>🕒 Disponibilidade</h3>
+                    <ul>
+                        <li><strong>Segunda a Sexta:</strong> 9h às 18h</li>
+                        <li><strong>Sábados:</strong> 9h às 12h</li>
+                        <li><strong>Domingos:</strong> Apenas urgências</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Seção adicional com dicas de contato -->
+        <div class="dicas-contato">
+            <h2>💡 Dicas para um Bom Contato</h2>
+            <div class="dicas-grid">
+                <div class="dica-item">
+                    <h4>🎯 Seja Específico</h4>
+                    <p>Quanto mais detalhes sobre o projeto ou oportunidade, melhor posso avaliar e responder adequadamente.</p>
+                </div>
+                <div class="dica-item">
+                    <h4>⏰ Prazo de Resposta</h4>
+                    <p>Geralmente respondo em até 24-48 horas. Para urgências, use o WhatsApp.</p>
+                </div>
+                <div class="dica-item">
+                    <h4>📎 Anexos</h4>
+                    <p>Se tiver briefings, documentos ou referências, pode mencionar que enviará por email.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Script JavaScript simples para o formulário -->
+    <script>
+        // Adiciona interatividade básica ao formulário
+        document.getElementById('formContato').addEventListener('submit', function(e) {
+            e.preventDefault(); // Impede o envio real do formulário
+            
+            // Simula o envio e mostra mensagem de sucesso
+            document.getElementById('mensagemRetorno').style.display = 'block';
+            
+            // Limpa os campos do formulário
+            this.reset();
+            
+            // Scroll para a mensagem de retorno
+            document.getElementById('mensagemRetorno').scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+        });
+    </script>
+</body>
+</html>

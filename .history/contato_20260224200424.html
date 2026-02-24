@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato - Anderson</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="menu">
+        <ul>
+            <li><a href="index.html">Sobre Mim</a></li>
+            <li><a href="formacao.html">Formação</a></li>
+            <li><a href="portfolio.html">Portfólio</a></li>
+            <li><a href="contato.html" class="ativo">Contato</a></li>
+        </ul>
+    </nav>
+
+    <main class="conteudo">
+        <h1>Entre em Contato</h1>
+        <p class="intro-contato">Caso queira conversar sobre meus projetos, estarei à disposição.</p>
+        
+        <div class="contato-container">
+            <div class="formulario-contato">
+                <h2>📩 Envie uma Mensagem</h2>
+                <form class="form-contato" id="formContato">
+                    <div class="campo"><label>Nome:</label><input type="text" required></div>
+                    <div class="campo"><label>Email:</label><input type="email" required></div>
+                    <div class="campo"><label>Mensagem:</label><textarea rows="4" required></textarea></div>
+                    <button type="submit" class="btn-enviar">Enviar</button>
+                </form>
+                <div id="mensagemRetorno" class="mensagem-retorno" style="display: none;">✅ Mensagem enviada com sucesso!</div>
+            </div>
+            
+            <div class="info-contato">
+                <h2>📞 Outros Contatos</h2>
+                <div class="contato-item">
+                    <h3>📱 WhatsApp</h3>
+                    <p><a href="https://wa.me/5577999512937">(77) 99951-2937</a></p>
+                </div>
+                <div class="contato-item">
+                    <h3>📧 Email / GitHub</h3>
+                    <p>honoratoann@gmail.com | <a href="https://github.com/AnderHonorato">AnderHonorato</a></p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.getElementById('formContato').addEventListener('submit', function(e) {
+            e.preventDefault(); 
+            document.getElementById('mensagemRetorno').style.display = 'block';
+            this.reset();
+        });
+    </script>
+</body>
+</html>
