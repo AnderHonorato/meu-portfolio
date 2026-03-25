@@ -1,0 +1,198 @@
+/* Paleta de Cores: Laranja Queimado (Apetite), Creme (Fundo) e Marrom Escuro (Texto) */
+:root {
+    --laranja-queimado: #d35400;
+    --laranja-claro: #e67e22;
+    --creme: #fdfbf7;
+    --marrom-escuro: #2c1e16;
+    --cinza-texto: #555555;
+    
+    --fonte-titulo: 'Merriweather', serif;
+    --fonte-texto: 'Open Sans', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: var(--fonte-texto);
+    color: var(--cinza-texto);
+    background-color: var(--creme);
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+.container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+.text-center { text-align: center; }
+
+/* === AVISO DE SITE MODELO (Fixo no topo) === */
+.aviso-modelo {
+    position: fixed;
+    top: 0; left: 0; width: 100%;
+    background-color: #e74c3c;
+    color: #fff;
+    text-align: center;
+    padding: 8px 15px;
+    font-size: 0.85rem;
+    z-index: 99999;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+.aviso-modelo p { margin: 0; }
+.aviso-modelo a { color: #fff; text-decoration: underline; font-weight: bold; margin-left: 10px; }
+.aviso-modelo a:hover { color: #f1c40f; }
+
+/* === CABEÇALHO === */
+.cabecalho {
+    padding: 25px 5%;
+    display: flex; justify-content: space-between; align-items: center;
+    position: fixed; width: 100%;
+    top: 35px; /* Empurrado para baixo por causa do aviso */
+    z-index: 1000;
+    transition: all 0.4s ease;
+    background: transparent;
+}
+
+.cabecalho.rolando {
+    padding: 15px 5%;
+    background: rgba(253, 251, 247, 0.95);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+}
+
+.logo {
+    font-family: var(--fonte-titulo);
+    font-size: 28px; font-weight: 700;
+    color: #fff;
+    transition: color 0.4s ease;
+}
+
+.logo span { color: var(--laranja-claro); }
+
+.cabecalho.rolando .logo { color: var(--marrom-escuro); }
+
+.menu { display: flex; align-items: center; gap: 30px; }
+
+.menu a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 0.95rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;
+    transition: color 0.3s ease;
+}
+
+.cabecalho.rolando .menu a { color: var(--marrom-escuro); }
+.menu a:hover { color: var(--laranja-claro) !important; }
+
+.btn-reserva {
+    border: 2px solid var(--laranja-claro);
+    padding: 8px 20px; border-radius: 30px;
+}
+.btn-reserva:hover { background-color: var(--laranja-claro); color: #fff !important; }
+
+/* === HERO SECTION === */
+.hero {
+    height: 100vh;
+    background: linear-gradient(rgba(44, 30, 22, 0.7), rgba(44, 30, 22, 0.7)), url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1920&q=80') center/cover;
+    display: flex; align-items: center; justify-content: center; text-align: center;
+    color: #fff; padding: 0 20px;
+}
+
+.hero-conteudo { max-width: 800px; margin-top: 40px; }
+
+.hero h1 {
+    font-family: var(--fonte-titulo);
+    font-size: 4rem; margin-bottom: 25px; line-height: 1.2;
+}
+
+.hero p { font-size: 1.2rem; font-weight: 300; margin-bottom: 40px; }
+
+.botao {
+    display: inline-block; background: var(--laranja-queimado); color: #fff;
+    padding: 15px 40px; text-decoration: none; border-radius: 30px;
+    font-weight: 600; text-transform: uppercase; letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+.botao:hover { background: var(--marrom-escuro); transform: translateY(-3px); }
+
+/* === SOBRE A CASA === */
+.sobre { padding: 100px 20px; }
+.titulo-secao {
+    font-family: var(--fonte-titulo); font-size: 2.8rem; color: var(--marrom-escuro); margin-bottom: 30px;
+}
+
+.sobre-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+}
+
+.sobre-texto p { margin-bottom: 20px; font-size: 1.05rem; }
+
+.sobre-imagem img {
+    width: 100%; border-radius: 10px; box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+/* === CARDÁPIO === */
+.menu-restaurante { background-color: #fff; padding: 100px 0; }
+.grid-cardapio {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 50px; margin-top: 50px;
+}
+
+.categoria-menu {
+    font-family: var(--fonte-titulo); font-size: 1.8rem; color: var(--laranja-queimado);
+    margin-bottom: 30px; border-bottom: 2px dashed #eee; padding-bottom: 15px;
+}
+
+.item-menu { margin-bottom: 25px; }
+
+.item-cabecalho {
+    display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px;
+}
+
+.item-cabecalho h4 { font-family: var(--fonte-titulo); font-size: 1.2rem; color: var(--marrom-escuro); }
+.preco { font-weight: 700; color: var(--laranja-queimado); font-size: 1.1rem; }
+.descricao { font-size: 0.9rem; font-style: italic; color: #777; }
+
+/* === RODAPÉ === */
+.rodape { background-color: var(--marrom-escuro); color: #ccc; padding: 60px 0 30px; text-align: center; }
+.rodape h3 { font-family: var(--fonte-titulo); color: var(--laranja-claro); margin-bottom: 15px; font-size: 2rem; }
+.rodape-info p { margin-bottom: 5px; }
+.rodape-creditos { margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; font-size: 0.85rem; }
+.rodape-creditos a { color: var(--laranja-claro); text-decoration: none; font-weight: bold; }
+
+/* === BOTÃO WHATSAPP E BALÃO === */
+.btn-whatsapp-flutuante {
+    position: fixed; bottom: 30px; right: 30px;
+    background-color: #25d366; color: #FFF;
+    border-radius: 50%; width: 65px; height: 65px;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0px 8px 20px rgba(0,0,0,0.15); z-index: 9999;
+}
+
+.balao-whatsapp {
+    position: absolute; bottom: 75px; right: 0;
+    background-color: #fff; color: var(--marrom-escuro);
+    padding: 12px 18px; border-radius: 12px; font-size: 0.85rem; font-weight: 600; text-align: center;
+    width: max-content; box-shadow: 0 8px 25px rgba(0,0,0,0.15); pointer-events: none;
+    animation: flutuarBalao 3s infinite;
+}
+
+.balao-whatsapp::after {
+    content: ''; position: absolute; bottom: -8px; right: 25px;
+    border-width: 8px 8px 0; border-style: solid; border-color: #fff transparent transparent transparent;
+}
+
+@keyframes flutuarBalao { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+
+/* === ANIMAÇÕES JS === */
+.js-fade { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.js-fade.ativo { opacity: 1; transform: translateY(0); }
+
+/* === RESPONSIVO === */
+@media (max-width: 768px) {
+    .menu { display: none; }
+    .hero h1 { font-size: 2.8rem; }
+    .sobre-grid { grid-template-columns: 1fr; gap: 30px; }
+    .btn-whatsapp-flutuante { bottom: 20px; right: 20px; width: 55px; height: 55px; }
+    .btn-whatsapp-flutuante svg { width: 30px; height: 30px; }
+    .aviso-modelo { font-size: 0.75rem; padding: 6px 10px; }
+    .cabecalho { top: 45px; } /* Ajuste pro banner no mobile */
+    .cabecalho.rolando { background: rgba(26, 18, 12, 0.95); } /* Fundo mais escuro no mobile */
+}

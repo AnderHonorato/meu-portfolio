@@ -1,0 +1,150 @@
+/* Paleta Dark Mode Hyper Premium */
+:root {
+    --bg-dark: #0a0a0a;
+    --bg-card: #141414;
+    --border-color: rgba(255, 255, 255, 0.08);
+    --neon-blue: #00f0ff;
+    --neon-purple: #7000ff;
+    --text-main: #ffffff;
+    --text-muted: #a0a0a0;
+    
+    --font-heading: 'Syne', sans-serif;
+    --font-body: 'Inter', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); color: var(--text-muted); background-color: var(--bg-dark); line-height: 1.6; overflow-x: hidden; }
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+/* === AVISO DE SITE MODELO === */
+.aviso-modelo {
+    position: fixed; top: 0; left: 0; width: 100%;
+    background-color: var(--neon-purple); color: #fff; text-align: center;
+    padding: 8px 15px; font-size: 0.85rem; z-index: 99999;
+}
+.aviso-modelo p { margin: 0; }
+.aviso-modelo a { color: #fff; text-decoration: underline; font-weight: bold; margin-left: 10px; }
+.aviso-modelo a:hover { color: var(--neon-blue); }
+
+/* === CABEÇALHO PILL (Pílula Flutuante) === */
+.cabecalho-pill {
+    position: fixed; top: 50px; left: 50%; transform: translateX(-50%);
+    width: 90%; max-width: 900px;
+    background: rgba(20, 20, 20, 0.7); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+    border: 1px solid var(--border-color); border-radius: 50px;
+    padding: 15px 30px; display: flex; justify-content: space-between; align-items: center;
+    z-index: 1000; transition: all 0.4s ease;
+}
+.cabecalho-pill.rolando { top: 40px; background: rgba(10, 10, 10, 0.9); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); }
+
+.logo { font-family: var(--font-heading); font-size: 22px; font-weight: 800; color: var(--text-main); letter-spacing: -1px; }
+.logo span { color: var(--neon-blue); }
+
+.menu { display: flex; gap: 30px; }
+.menu a { text-decoration: none; color: var(--text-muted); font-size: 0.9rem; font-weight: 600; transition: color 0.3s ease; }
+.menu a:hover { color: var(--text-main); text-shadow: 0 0 10px rgba(255,255,255,0.3); }
+
+.btn-neon { 
+    text-decoration: none; color: var(--text-main); font-size: 0.9rem; font-weight: 600;
+    padding: 10px 25px; border-radius: 30px;
+    background: linear-gradient(90deg, var(--neon-purple), var(--neon-blue));
+    box-shadow: 0 0 15px rgba(112, 0, 255, 0.4);
+    transition: all 0.3s ease;
+}
+.btn-neon:hover { transform: scale(1.05); box-shadow: 0 0 25px rgba(0, 240, 255, 0.6); }
+
+/* === HERO SECTION === */
+.hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 120px 20px 0; overflow: hidden; }
+
+/* Efeito de luz de fundo */
+.hero-blur-circle {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 50vw; height: 50vw; max-width: 600px; max-height: 600px;
+    background: radial-gradient(circle, rgba(112,0,255,0.15) 0%, rgba(0,240,255,0.05) 50%, rgba(10,10,10,0) 70%);
+    filter: blur(60px); z-index: -1;
+}
+
+.hero-conteudo { max-width: 800px; position: relative; z-index: 1; }
+
+.badge { display: inline-block; padding: 8px 20px; border: 1px solid var(--border-color); border-radius: 30px; font-size: 0.8rem; color: var(--neon-blue); margin-bottom: 30px; background: rgba(0, 240, 255, 0.05); }
+
+.hero h1 { font-family: var(--font-heading); font-size: 5rem; font-weight: 800; color: var(--text-main); line-height: 1.1; margin-bottom: 30px; letter-spacing: -2px; }
+.hero h1 span { background: linear-gradient(90deg, var(--neon-purple), var(--neon-blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+.hero p { font-size: 1.2rem; margin-bottom: 50px; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.8; }
+
+.btn-primary { display: inline-block; background: var(--text-main); color: var(--bg-dark); padding: 18px 45px; text-decoration: none; border-radius: 50px; font-weight: 700; transition: transform 0.3s ease; }
+.btn-primary:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(255,255,255,0.1); }
+
+/* === BENTO GRID SECTION === */
+.bento-section { padding: 100px 0; position: relative; }
+.titulo-neon { font-family: var(--font-heading); font-size: 3rem; color: var(--text-main); text-align: center; margin-bottom: 60px; }
+
+.bento-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: 1000px; margin: 0 auto; }
+
+.bento-card {
+    background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 24px;
+    padding: 40px; position: relative; overflow: hidden;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+.bento-card:hover { transform: translateY(-5px); border-color: rgba(255,255,255,0.2); }
+
+.bento-wide { grid-column: span 2; }
+
+.bento-card h3 { font-family: var(--font-heading); color: var(--text-main); font-size: 1.8rem; margin-bottom: 15px; z-index: 2; position: relative; }
+.bento-card p { font-size: 1rem; z-index: 2; position: relative; }
+.icone-tech { font-size: 2.5rem; margin-bottom: 20px; }
+
+.bento-img-glow {
+    position: absolute; right: -50px; bottom: -50px; width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(0,240,255,0.2) 0%, transparent 70%); filter: blur(30px);
+}
+
+.bg-gradiente { background: linear-gradient(135deg, var(--bg-card), #1a1025); border-color: rgba(112, 0, 255, 0.3); text-align: center; }
+.btn-transparente { display: inline-block; margin-top: 20px; padding: 12px 30px; border: 1px solid var(--text-main); color: var(--text-main); border-radius: 30px; text-decoration: none; font-weight: 600; transition: background 0.3s; }
+.btn-transparente:hover { background: var(--text-main); color: var(--bg-dark); }
+
+/* === TEXTO INFINITO (MARQUEE) === */
+.estatisticas { background: var(--bg-card); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); padding: 20px 0; overflow: hidden; white-space: nowrap; margin-top: 80px; }
+.marquee { display: inline-block; animation: scrollMarquee 20s linear infinite; }
+.marquee-content span { font-family: var(--font-heading); font-size: 1.5rem; color: var(--text-main); margin-right: 50px; opacity: 0.5; }
+
+@keyframes scrollMarquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+/* === RODAPÉ === */
+.rodape { padding: 80px 0 40px; text-align: center; border-top: 1px solid var(--border-color); margin-top: 80px; }
+.logo-rodape { font-family: var(--font-heading); font-size: 2.5rem; color: var(--text-main); margin-bottom: 10px; }
+.logo-rodape span { color: var(--neon-purple); }
+.tagline { margin-bottom: 40px; }
+
+.rodape-creditos { border-top: 1px solid var(--border-color); padding-top: 30px; font-size: 0.85rem; }
+.link-destaque { color: var(--neon-blue); text-decoration: none; font-weight: 600; }
+.link-destaque:hover { color: var(--neon-purple); }
+
+/* === BOTÃO WHATSAPP NEON E BALÃO === */
+.btn-whatsapp-flutuante { position: fixed; bottom: 30px; right: 30px; background-color: #25d366; color: #FFF; border-radius: 50%; width: 65px; height: 65px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 20px rgba(37, 211, 102, 0.4); z-index: 9999; transition: all 0.3s ease; }
+.btn-whatsapp-flutuante:hover { transform: scale(1.1); box-shadow: 0 0 30px rgba(37, 211, 102, 0.8); }
+
+.balao-whatsapp { position: absolute; bottom: 75px; right: 0; background-color: var(--bg-card); color: var(--text-main); border: 1px solid var(--border-color); padding: 12px 18px; border-radius: 12px; font-size: 0.85rem; font-weight: 600; text-align: center; width: max-content; pointer-events: none; animation: flutuarBalao 3s infinite; }
+.balao-whatsapp::after { content: ''; position: absolute; bottom: -8px; right: 25px; border-width: 8px 8px 0; border-style: solid; border-color: var(--bg-card) transparent transparent transparent; }
+.balao-neon { box-shadow: 0 0 15px rgba(0, 240, 255, 0.2); } /* Efeito neon sutil no balão */
+
+@keyframes flutuarBalao { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+
+/* === ANIMAÇÕES JS === */
+.js-fade { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.js-fade.ativo { opacity: 1; transform: translateY(0); }
+
+/* === RESPONSIVO === */
+@media (max-width: 768px) {
+    .menu, .btn-neon { display: none; }
+    .cabecalho-pill { justify-content: center; top: 45px; } /* Ajuste p/ o banner */
+    .hero h1 { font-size: 3rem; }
+    .bento-grid { grid-template-columns: 1fr; }
+    .bento-wide { grid-column: span 1; }
+    .btn-whatsapp-flutuante { bottom: 20px; right: 20px; width: 55px; height: 55px; }
+    .btn-whatsapp-flutuante svg { width: 30px; height: 30px; }
+    .aviso-modelo { font-size: 0.75rem; padding: 6px 10px; }
+}

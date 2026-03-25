@@ -1,0 +1,89 @@
+:root {
+    --marinho-escuro: #0a192f; --marinho-claro: #172a45; --dourado: #d4af37;
+    --cinza-claro: #f4f4f4; --texto: #333333;
+    --fonte-serif: 'Cinzel', serif; --fonte-sans: 'Lato', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--fonte-sans); color: var(--texto); background-color: var(--cinza-claro); line-height: 1.6; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+/* === AVISO DE SITE MODELO === */
+.aviso-modelo {
+    position: fixed; top: 0; left: 0; width: 100%; background-color: #e74c3c;
+    color: #ffffff; text-align: center; padding: 8px 15px; font-size: 0.85rem; z-index: 99999; box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+.aviso-modelo p { margin: 0; }
+.aviso-modelo a { color: #ffffff; text-decoration: underline; font-weight: bold; margin-left: 10px; }
+.aviso-modelo a:hover { color: #f1c40f; }
+
+/* === CABEÇALHO === */
+.cabecalho {
+    background-color: #ffffff; padding: 20px 5%; display: flex; justify-content: space-between; align-items: center;
+    position: fixed; width: 100%; top: 35px; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); transition: padding 0.3s ease;
+}
+.cabecalho.rolando { padding: 10px 5%; }
+.logo { font-family: var(--fonte-serif); font-size: 24px; font-weight: 700; color: var(--marinho-escuro); }
+.logo span { color: var(--dourado); }
+.menu { display: flex; align-items: center; gap: 30px; }
+.menu a { text-decoration: none; color: var(--texto); font-size: 0.95rem; font-weight: 700; text-transform: uppercase; transition: color 0.3s ease; }
+.menu a:hover { color: var(--dourado); }
+.btn-menu { border: 1px solid var(--marinho-escuro); padding: 8px 20px; border-radius: 3px; }
+.btn-menu:hover { background-color: var(--marinho-escuro); color: #fff !important; }
+
+/* === HERO === */
+.hero {
+    height: 100vh;
+    background: linear-gradient(rgba(10, 25, 47, 0.8), rgba(10, 25, 47, 0.8)), url('https://images.unsplash.com/photo-1505664173696-07284a141d66?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80') center/cover;
+    display: flex; align-items: center; color: #fff; padding: 0 5%;
+}
+.hero-conteudo { max-width: 600px; margin-top: 50px; }
+.hero h1 { font-family: var(--fonte-serif); font-size: 3.5rem; line-height: 1.2; margin-bottom: 20px; }
+.hero p { font-size: 1.2rem; margin-bottom: 40px; font-weight: 300; }
+.botao { background-color: var(--dourado); color: var(--marinho-escuro); padding: 15px 35px; text-decoration: none; font-weight: bold; text-transform: uppercase; border-radius: 2px; transition: background 0.3s ease; }
+.botao:hover { background-color: #bfa032; }
+
+/* === ÁREAS === */
+.areas-atuacao { padding: 100px 0; background-color: #fff; }
+.titulo-secao { font-family: var(--fonte-serif); text-align: center; font-size: 2.5rem; color: var(--marinho-escuro); margin-bottom: 60px; }
+.grid-areas { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+.cartao-area { background-color: var(--cinza-claro); padding: 40px 30px; text-align: center; border-top: 3px solid var(--dourado); transition: transform 0.3s ease; }
+.cartao-area:hover { transform: translateY(-10px); }
+.icone { font-size: 2.5rem; margin-bottom: 20px; }
+.cartao-area h3 { font-family: var(--fonte-serif); color: var(--marinho-escuro); margin-bottom: 15px; }
+
+/* === DESTAQUE === */
+.destaque { background-color: var(--marinho-escuro); color: var(--dourado); padding: 80px 0; }
+.destaque-grid { display: flex; justify-content: space-around; text-align: center; flex-wrap: wrap; gap: 30px; }
+.destaque h4 { font-family: var(--fonte-serif); font-size: 3rem; }
+.destaque p { color: #fff; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; }
+
+/* === RODAPÉ === */
+.rodape { background-color: var(--marinho-claro); color: #fff; padding: 60px 0 30px; }
+.rodape-info { text-align: center; margin-bottom: 40px; }
+.rodape-info h3 { font-family: var(--fonte-serif); color: var(--dourado); margin-bottom: 15px; }
+.rodape-creditos { text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; font-size: 0.85rem; }
+.rodape-creditos a { color: var(--dourado); text-decoration: none; }
+.rodape-creditos a:hover { text-decoration: underline; }
+
+/* === BOTÃO WHATSAPP E BALÃO === */
+.btn-whatsapp-flutuante { position: fixed; bottom: 30px; right: 30px; background-color: #25d366; color: #FFF; border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; box-shadow: 0px 4px 10px rgba(0,0,0,0.3); z-index: 9999; }
+.balao-whatsapp { position: absolute; bottom: 70px; right: 0; background-color: #fff; color: var(--marinho-escuro); padding: 10px 15px; border-radius: 8px; font-size: 0.8rem; font-weight: bold; text-align: center; width: max-content; box-shadow: 0 4px 10px rgba(0,0,0,0.2); animation: flutuarBalao 3s infinite; }
+.balao-whatsapp::after { content: ''; position: absolute; bottom: -6px; right: 20px; border-width: 6px 6px 0; border-style: solid; border-color: #fff transparent transparent transparent; }
+@keyframes flutuarBalao { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+
+/* === ANIMAÇÕES JS === */
+.js-fade { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.js-fade.ativo { opacity: 1; transform: translateY(0); }
+
+/* === RESPONSIVO === */
+@media (max-width: 768px) {
+    .menu { display: none; }
+    .hero h1 { font-size: 2.5rem; }
+    .cabecalho { top: 45px; }
+    .aviso-modelo { font-size: 0.75rem; padding: 6px 10px; }
+    .btn-whatsapp-flutuante { bottom: 20px; right: 20px; width: 50px; height: 50px; }
+    .btn-whatsapp-flutuante svg { width: 28px; height: 28px; }
+    .balao-whatsapp { bottom: 60px; font-size: 0.75rem; }
+}
