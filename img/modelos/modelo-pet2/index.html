@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PatinhasFelizes — Pet Shop</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;900&family=Lora:wght@500;600&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --verde:    #2d7a4f;
+    --verde-cl: #e8f5ed;
+    --laranja:  #e8742a;
+    --laranja-cl: #fff3eb;
+    --amarelo:  #f5c842;
+    --creme:    #fdf8f2;
+    --cinza:    #f4f1eb;
+    --texto:    #2c2417;
+    --muted:    #7a6e60;
+    --borda:    #e2d9cc;
+    --branco:   #ffffff;
+    --sombra:   0 4px 24px rgba(44,36,23,.09);
+    --r:        12px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--creme);
+    color: var(--texto);
+    line-height: 1.6;
+  }
+
+  /* ── NAV ── */
+  nav {
+    background: var(--branco);
+    border-bottom: 1px solid var(--borda);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+  }
+  .logo {
+    font-family: 'Lora', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--verde);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .logo-pata { font-size: 24px; }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    list-style: none;
+  }
+  .nav-links a {
+    padding: 8px 14px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--muted);
+    font-weight: 600;
+    font-size: 14px;
+    transition: all .18s;
+  }
+  .nav-links a:hover { background: var(--cinza); color: var(--texto); }
+  .btn-nav {
+    background: var(--verde);
+    color: var(--branco) !important;
+    border-radius: 8px;
+    padding: 9px 18px !important;
+  }
+  .btn-nav:hover { background: #235e3c !important; }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(135deg, #e8f5ed 0%, #fff9f0 100%);
+    border-bottom: 1px solid var(--borda);
+    padding: 80px 24px;
+    text-align: center;
+  }
+  .hero-badge {
+    display: inline-block;
+    background: var(--verde-cl);
+    color: var(--verde);
+    font-size: 13px;
+    font-weight: 700;
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #b8dfc6;
+  }
+  .hero h1 {
+    font-family: 'Lora', serif;
+    font-size: clamp(34px, 6vw, 56px);
+    font-weight: 600;
+    line-height: 1.15;
+    color: var(--texto);
+    max-width: 680px;
+    margin: 0 auto 18px;
+  }
+  .hero h1 span { color: var(--verde); }
+  .hero p {
+    font-size: 18px;
+    color: var(--muted);
+    max-width: 480px;
+    margin: 0 auto 36px;
+  }
+  .hero-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--verde);
+    color: #fff;
+    padding: 14px 28px;
+    border-radius: var(--r);
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+    transition: background .18s, transform .12s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .btn-primary:hover { background: #235e3c; transform: translateY(-1px); }
+  .btn-outline {
+    background: transparent;
+    color: var(--verde);
+    padding: 14px 28px;
+    border-radius: var(--r);
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+    border: 2px solid var(--verde);
+    transition: all .18s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .btn-outline:hover { background: var(--verde-cl); }
+  .hero-animals {
+    margin-top: 56px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .animal-chip {
+    background: var(--branco);
+    border: 1px solid var(--borda);
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* ── SEÇÕES ── */
+  section { padding: 72px 24px; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  .section-tag {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    color: var(--verde);
+    margin-bottom: 8px;
+  }
+  .section-title {
+    font-family: 'Lora', serif;
+    font-size: clamp(26px, 4vw, 38px);
+    font-weight: 600;
+    color: var(--texto);
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+  .section-sub {
+    font-size: 16px;
+    color: var(--muted);
+    max-width: 520px;
+    margin-bottom: 48px;
+  }
+
+  /* ── SERVIÇOS ── */
+  .services-bg { background: var(--branco); }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 20px;
+  }
+  .service-card {
+    background: var(--creme);
+    border: 1px solid var(--borda);
+    border-radius: 16px;
+    padding: 28px 24px;
+    transition: transform .2s, box-shadow .2s;
+  }
+  .service-card:hover { transform: translateY(-4px); box-shadow: var(--sombra); }
+  .service-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    margin-bottom: 16px;
+  }
+  .ic-verde  { background: var(--verde-cl); }
+  .ic-laranja{ background: var(--laranja-cl); }
+  .ic-amarelo{ background: #fdf6d8; }
+  .ic-azul   { background: #e8f0fd; }
+  .service-card h3 {
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--texto);
+  }
+  .service-card p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+  .service-price {
+    margin-top: 16px;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--verde);
+  }
+
+  /* ── PRODUTOS ── */
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+  }
+  .product-card {
+    background: var(--branco);
+    border: 1px solid var(--borda);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform .2s, box-shadow .2s;
+  }
+  .product-card:hover { transform: translateY(-4px); box-shadow: var(--sombra); }
+  .product-img {
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 72px;
+  }
+  .product-info { padding: 16px 18px 20px; }
+  .product-tag {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--laranja);
+    background: var(--laranja-cl);
+    padding: 2px 8px;
+    border-radius: 10px;
+    display: inline-block;
+    margin-bottom: 8px;
+  }
+  .product-info h3 { font-size: 15px; font-weight: 700; color: var(--texto); margin-bottom: 4px; }
+  .product-info p  { font-size: 13px; color: var(--muted); margin-bottom: 12px; }
+  .product-footer  { display: flex; align-items: center; justify-content: space-between; }
+  .product-price   { font-size: 18px; font-weight: 900; color: var(--texto); }
+  .btn-cart {
+    background: var(--verde);
+    color: #fff;
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background .18s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .btn-cart:hover { background: #235e3c; }
+
+  /* ── DESTAQUES BANNER ── */
+  .banner-strip {
+    background: var(--verde);
+    color: #fff;
+    padding: 40px 24px;
+    text-align: center;
+  }
+  .banner-strip h2 {
+    font-family: 'Lora', serif;
+    font-size: 28px;
+    margin-bottom: 8px;
+  }
+  .banner-strip p { opacity: .82; margin-bottom: 20px; font-size: 15px; }
+  .btn-white {
+    background: #fff;
+    color: var(--verde);
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none;
+    transition: opacity .18s;
+  }
+  .btn-white:hover { opacity: .9; }
+
+  /* ── POR QUÊ NÓS ── */
+  .why-bg { background: var(--cinza); }
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 24px;
+  }
+  .why-item { text-align: center; padding: 24px 16px; }
+  .why-num {
+    font-family: 'Lora', serif;
+    font-size: 42px;
+    font-weight: 600;
+    color: var(--verde);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .why-item h4 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+  .why-item p  { font-size: 14px; color: var(--muted); }
+
+  /* ── DEPOIMENTOS ── */
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+  .review-card {
+    background: var(--branco);
+    border: 1px solid var(--borda);
+    border-radius: 16px;
+    padding: 24px;
+  }
+  .stars { color: var(--amarelo); font-size: 16px; margin-bottom: 12px; }
+  .review-text { font-size: 15px; color: var(--texto); line-height: 1.65; margin-bottom: 16px; font-style: italic; }
+  .review-author { display: flex; align-items: center; gap: 12px; }
+  .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .av1 { background: #fce8e8; }
+  .av2 { background: #e8f0fc; }
+  .av3 { background: #fdf6d8; }
+  .author-name  { font-weight: 700; font-size: 14px; }
+  .author-pet   { font-size: 12px; color: var(--muted); }
+
+  /* ── NEWSLETTER ── */
+  .nl-bg { background: var(--branco); }
+  .nl-box {
+    background: linear-gradient(135deg, var(--verde-cl), #fff9f0);
+    border: 1px solid var(--borda);
+    border-radius: 20px;
+    padding: 56px 48px;
+    text-align: center;
+    max-width: 620px;
+    margin: 0 auto;
+  }
+  .nl-icon { font-size: 48px; margin-bottom: 16px; }
+  .nl-box h2 { font-family:'Lora',serif; font-size:26px; margin-bottom:10px; }
+  .nl-box p  { color: var(--muted); margin-bottom: 28px; }
+  .nl-form { display:flex; gap:10px; max-width:400px; margin:0 auto; }
+  .nl-form input {
+    flex: 1;
+    padding: 12px 16px;
+    border: 1.5px solid var(--borda);
+    border-radius: 10px;
+    font-size: 14px;
+    font-family: 'Nunito', sans-serif;
+    background: var(--branco);
+    color: var(--texto);
+    outline: none;
+    transition: border-color .18s;
+  }
+  .nl-form input:focus { border-color: var(--verde); }
+  .nl-form input::placeholder { color: var(--muted); }
+  .nl-form button {
+    background: var(--verde);
+    color: #fff;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: 'Nunito', sans-serif;
+    cursor: pointer;
+    transition: background .18s;
+  }
+  .nl-form button:hover { background: #235e3c; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--texto);
+    color: rgba(255,255,255,.7);
+    padding: 48px 24px 28px;
+  }
+  .footer-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+  .footer-logo {
+    font-family: 'Lora', serif;
+    font-size: 20px;
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .footer-about { font-size: 14px; line-height: 1.7; }
+  .footer-col h4 { color: #fff; font-size: 14px; font-weight: 700; margin-bottom: 14px; }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .footer-col ul li a {
+    text-decoration: none;
+    color: rgba(255,255,255,.6);
+    font-size: 14px;
+    transition: color .15s;
+  }
+  .footer-col ul li a:hover { color: #fff; }
+  .footer-bottom {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .social-links { display:flex; gap:10px; }
+  .social-links a {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    background: rgba(255,255,255,.1);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+    font-size: 16px;
+    transition: background .18s;
+  }
+  .social-links a:hover { background: rgba(255,255,255,.2); }
+
+  /* ── RESPONSIVO ── */
+  @media (max-width: 768px) {
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .nl-box { padding: 36px 24px; }
+    .nl-form { flex-direction: column; }
+    .nav-links { display: none; }
+  }
+  @media (max-width: 480px) {
+    .footer-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo"><span class="logo-pata">🐾</span> PatinhasFelizes</a>
+    <ul class="nav-links">
+      <li><a href="#servicos">Serviços</a></li>
+      <li><a href="#produtos">Produtos</a></li>
+      <li><a href="#depoimentos">Avaliações</a></li>
+      <li><a href="#contato" class="btn-nav">Agendar</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">🌿 Aberto todos os dias das 8h às 20h</div>
+  <h1>Cuidado com <span>amor</span> para o seu pet</h1>
+  <p>Banho, tosa, veterinário e muito mais. Tudo o que seu amiguinho precisa em um só lugar.</p>
+  <div class="hero-btns">
+    <a href="#servicos" class="btn-primary">🐶 Ver serviços</a>
+    <a href="#produtos" class="btn-outline">🛒 Ver produtos</a>
+  </div>
+  <div class="hero-animals">
+    <div class="animal-chip">🐕 Cães</div>
+    <div class="animal-chip">🐈 Gatos</div>
+    <div class="animal-chip">🐹 Roedores</div>
+    <div class="animal-chip">🐦 Aves</div>
+    <div class="animal-chip">🐠 Peixes</div>
+  </div>
+</section>
+
+<!-- SERVIÇOS -->
+<section class="services-bg" id="servicos">
+  <div class="container">
+    <div class="section-tag">O que oferecemos</div>
+    <h2 class="section-title">Serviços completos<br>para seu pet</h2>
+    <p class="section-sub">Profissionais capacitados e ambiente seguro para o seu animal se sentir em casa.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon ic-azul">🛁</div>
+        <h3>Banho & Tosa</h3>
+        <p>Banho com produtos hipoalergênicos, escovação, hidratação e perfume especial.</p>
+        <div class="service-price">A partir de R$ 45,00</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon ic-verde">🩺</div>
+        <h3>Veterinário</h3>
+        <p>Consultas, vacinas, exames e acompanhamento de saúde preventiva.</p>
+        <div class="service-price">A partir de R$ 90,00</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon ic-laranja">🏨</div>
+        <h3>Hotel para Pets</h3>
+        <p>Hospedagem confortável com monitoramento 24h, alimentação e muito carinho.</p>
+        <div class="service-price">A partir de R$ 60,00/dia</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon ic-amarelo">🦷</div>
+        <h3>Dentista Pet</h3>
+        <p>Limpeza e higienização dental especializada para evitar problemas bucais.</p>
+        <div class="service-price">A partir de R$ 120,00</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUTOS -->
+<section id="produtos">
+  <div class="container">
+    <div class="section-tag">Loja virtual</div>
+    <h2 class="section-title">Produtos selecionados</h2>
+    <p class="section-sub">Tudo que seu pet precisa com qualidade e preço justo.</p>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-img" style="background:#fdf6d8;">🦴</div>
+        <div class="product-info">
+          <div class="product-tag">Alimentação</div>
+          <h3>Ração Premium Cão</h3>
+          <p>15kg — Todas as raças</p>
+          <div class="product-footer">
+            <span class="product-price">R$ 189,90</span>
+            <button class="btn-cart">+</button>
+          </div>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img" style="background:#fce8e8;">😺</div>
+        <div class="product-info">
+          <div class="product-tag">Alimentação</div>
+          <h3>Ração Premium Gato</h3>
+          <p>10kg — Indoor & outdoor</p>
+          <div class="product-footer">
+            <span class="product-price">R$ 149,90</span>
+            <button class="btn-cart">+</button>
+          </div>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img" style="background:#e8f0fc;">🪮</div>
+        <div class="product-info">
+          <div class="product-tag">Higiene</div>
+          <h3>Kit Banho Completo</h3>
+          <p>Shampoo, condicionador e perfume</p>
+          <div class="product-footer">
+            <span class="product-price">R$ 68,00</span>
+            <button class="btn-cart">+</button>
+          </div>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img" style="background:#e8f5ed;">🎾</div>
+        <div class="product-info">
+          <div class="product-tag">Brinquedo</div>
+          <h3>Kit Brinquedos Dog</h3>
+          <p>5 peças sortidas — Anti-estresse</p>
+          <div class="product-footer">
+            <span class="product-price">R$ 42,00</span>
+            <button class="btn-cart">+</button>
+          </div>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img" style="background:#fff3eb;">🛏️</div>
+        <div class="product-info">
+          <div class="product-tag">Conforto</div>
+          <h3>Cama Pelúcia M</h3>
+          <p>60×50cm — Lavável na máquina</p>
+          <div class="product-footer">
+            <span class="product-price">R$ 96,00</span>
+            <button class="btn-cart">+</button>
+          </div>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img" style="background:#f3e8fd;">💊</div>
+        <div class="product-info">
+          <div class="product-tag">Saúde</div>
+          <h3>Antiparasitário</h3>
+          <p>Proteção por 3 meses — até 10kg</p>
+          <div class="product-footer">
+            <span class="product-price">R$ 54,90</span>
+            <button class="btn-cart">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BANNER -->
+<div class="banner-strip">
+  <div>
+    <h2>🐾 Primeira consulta com 30% OFF</h2>
+    <p>Para clientes novos, na primeira visita ao nosso veterinário.</p>
+    <a href="#contato" class="btn-white">Agendar agora</a>
+  </div>
+</div>
+
+<!-- POR QUÊ NÓS -->
+<section class="why-bg">
+  <div class="container">
+    <div style="text-align:center; margin-bottom:48px;">
+      <div class="section-tag">Nossos números</div>
+      <h2 class="section-title">Por que nos escolher?</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="why-num">12+</div>
+        <h4>Anos de experiência</h4>
+        <p>Mais de uma década cuidando com amor e profissionalismo.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-num">4.8★</div>
+        <h4>Avaliação dos clientes</h4>
+        <p>Mais de 800 avaliações no Google com nota excelente.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-num">3.200</div>
+        <h4>Pets atendidos/ano</h4>
+        <p>Cães, gatos e outros animais que nos visitam todo ano.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-num">100%</div>
+        <h4>Produtos certificados</h4>
+        <p>Todos os itens passam por rigorosa seleção de qualidade.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section id="depoimentos">
+  <div class="container">
+    <div class="section-tag">O que dizem</div>
+    <h2 class="section-title">Clientes satisfeitos</h2>
+    <p class="section-sub">Veja o que os donos de pets falam sobre os nossos serviços.</p>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"O melhor pet shop da cidade! Meu Golden fica super feliz sempre que vem aqui. A equipe é super carinhosa e profissional."</p>
+        <div class="review-author">
+          <div class="avatar av1">👩</div>
+          <div>
+            <div class="author-name">Fernanda Lima</div>
+            <div class="author-pet">🐕 Dona do Thor</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"Levo minha gatinha há 3 anos para o veterinário aqui. Atenção incrível, equipe muito preparada. Recomendo de olhos fechados!"</p>
+        <div class="review-author">
+          <div class="avatar av2">👨</div>
+          <div>
+            <div class="author-name">Carlos Mendes</div>
+            <div class="author-pet">🐈 Dono da Mel</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"O hotel para pets é maravilhoso! Viajei tranquila sabendo que meus dogs estavam em boas mãos. Voltei e eles estavam felizes e saudáveis."</p>
+        <div class="review-author">
+          <div class="avatar av3">👩</div>
+          <div>
+            <div class="author-name">Juliana Costa</div>
+            <div class="author-pet">🐕 Dona do Toby e Lola</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="nl-bg" id="contato">
+  <div class="container">
+    <div class="nl-box">
+      <div class="nl-icon">📬</div>
+      <h2>Fique por dentro das novidades</h2>
+      <p>Receba dicas de cuidados, promoções exclusivas e novidades da PatinhasFelizes.</p>
+      <form class="nl-form" onsubmit="event.preventDefault(); this.innerHTML='<p style=color:var(--verde);font-weight:700>✅ Cadastro realizado! Obrigado.</p>'">
+        <input type="email" placeholder="Seu melhor e-mail" required>
+        <button type="submit">Quero receber</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <a href="#" class="footer-logo">🐾 PatinhasFelizes</a>
+      <p class="footer-about">Cuidado com amor para o seu melhor amigo. Estamos aqui para tornar a vida dos pets (e dos seus donos) muito mais feliz.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Serviços</h4>
+      <ul>
+        <li><a href="#">Banho & Tosa</a></li>
+        <li><a href="#">Veterinário</a></li>
+        <li><a href="#">Hotel Pet</a></li>
+        <li><a href="#">Dentista Pet</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Loja</h4>
+      <ul>
+        <li><a href="#">Ração</a></li>
+        <li><a href="#">Higiene</a></li>
+        <li><a href="#">Brinquedos</a></li>
+        <li><a href="#">Saúde</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contato</h4>
+      <ul>
+        <li><a href="#">📍 Rua das Flores, 420</a></li>
+        <li><a href="#">📞 (11) 9 8765-4321</a></li>
+        <li><a href="#">✉️ oi@patinhas.com.br</a></li>
+        <li><a href="#">🕐 Seg–Dom 8h–20h</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 PatinhasFelizes. Feito com 🐾 para os pets.</span>
+    <div class="social-links">
+      <a href="#">📘</a>
+      <a href="#">📸</a>
+      <a href="#">🐦</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
