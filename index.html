@@ -137,6 +137,10 @@ img{max-width:100%;display:block}
 .t-btn:hover .t-tip{opacity:1}
 .nav-cta{background:var(--ac);color:#fff;padding:6px 14px;border-radius:var(--rb);font-size:.7rem;letter-spacing:1px;text-transform:uppercase;font-family:var(--fm);transition:background .3s,transform .3s;white-space:nowrap;flex-shrink:0}
 .nav-cta:hover{background:var(--hi);transform:translateY(-2px)}
+.nav-af{position:relative;display:inline-flex;align-items:center;gap:8px;min-height:36px;padding:0 14px;background:var(--hi);color:#fff;font:700 .65rem/1 var(--fm);letter-spacing:1.2px;text-transform:uppercase;white-space:nowrap;flex-shrink:0;clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px));transition:transform .25s,filter .25s}
+.nav-af::before{content:"";width:5px;height:5px;background:#caff70;transform:rotate(45deg)}
+.nav-af svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.nav-af:hover{color:#fff;transform:translateY(-2px);filter:brightness(1.12)}
 .nav-ham{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none;flex-shrink:0}
 .nav-ham span{display:block;width:22px;height:2px;background:var(--tx);border-radius:1px;transition:all .3s}
 .nav-ham.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
@@ -221,6 +225,10 @@ img{max-width:100%;display:block}
 [data-theme="light"] .btn-o{border-color:rgba(26,10,46,.2)}
 [data-theme="ink"] .btn-o{border-color:rgba(44,26,8,.25)}
 .btn-o:hover{border-color:var(--ac3);color:var(--ac3);transform:translateY(-3px)}
+.btn-af{position:relative;background:var(--hi);color:#fff;padding:12px 22px;clip-path:polygon(0 0,calc(100% - 13px) 0,100% 13px,100% 100%,13px 100%,0 calc(100% - 13px));font-size:.82rem;font-family:var(--fm);display:inline-flex;align-items:center;gap:10px;box-shadow:0 10px 30px rgba(249,115,22,.22);transition:transform .3s,filter .3s}
+.btn-af::before{content:"";width:6px;height:6px;background:#caff70;transform:rotate(45deg)}
+.btn-af svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.btn-af:hover{color:#fff;transform:translateY(-3px);filter:brightness(1.12)}
 /* avatar */
 .hero-av{flex:.7;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .av-ring{position:relative;width:clamp(170px,23vw,280px);height:clamp(170px,23vw,280px)}
@@ -525,7 +533,7 @@ img{max-width:100%;display:block}
 }
 @media(max-width:600px){
   .sites-g,.mod-g,.games-g{grid-template-columns:1fr}
-  .wa-wrap{right:12px;bottom:14px}.nav-cta{display:none}
+  .wa-wrap{right:12px;bottom:14px}.nav-cta{display:none}.nav-af{min-height:34px;padding:0 11px;font-size:.58rem}.nav-af svg{display:none}
   .footer-in{flex-direction:column;text-align:center}
   .game-arrow{width:36px;height:36px}
 }
@@ -568,13 +576,14 @@ img{max-width:100%;display:block}
       <button class="t-btn"        data-t="nature"    aria-label="Nature">🌿<span class="t-tip">Tema natureza</span></button>
       <button class="t-btn"        data-t="ocean"     aria-label="Ocean">🌊<span class="t-tip">Tema oceano</span></button>
     </div>
-    <a href="https://wa.me/5577999512937?text=Olá%20Anderson,%20vim%20pelo%20portfólio!" target="_blank" class="nav-cta">Contratar</a>
+    <a href="https://ander-flow.vercel.app" class="nav-af" aria-label="Abrir o site principal AnderFlow">AnderFlow <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13m-5-5 5 5-5 5"/></svg></a>
     <button class="nav-ham" id="nav-ham" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </header>
 
 <!-- drawer mobile -->
 <div class="nav-drawer" id="nav-drawer">
+  <a href="https://ander-flow.vercel.app" style="color:var(--hi)">Abrir AnderFlow</a>
   <a href="#sobre">Sobre</a><a href="#formacao">Formação</a>
   <a href="#sites">Sites</a><a href="#modelos">Modelos</a>
   <a href="#games">Games</a><a href="#contato">Contato</a>
@@ -583,6 +592,7 @@ img{max-width:100%;display:block}
 
 <!-- ══ PILL NAV ══ -->
 <nav class="pill-nav" id="pill-nav" aria-label="Acesso rápido">
+  <a href="https://ander-flow.vercel.app" style="color:var(--hi)">AnderFlow</a>
   <a href="#sobre">Sobre</a>
   <a href="#formacao">Formação</a>
   <a href="#sites">Sites</a>
@@ -603,6 +613,7 @@ img{max-width:100%;display:block}
         <h1>Dev<br><span class="v">Full Stack</span><br>&amp; <span class="o">Criador</span></h1>
         <p class="hero-desc">Estudante de Engenharia de Software na UNINTER, criador do <strong>MarkAí</strong>, <strong>FaleZap</strong> e <strong>AlphaBot</strong>. Construo soluções digitais que resolvem problemas reais.</p>
         <div class="hero-btns">
+          <a href="https://ander-flow.vercel.app" class="btn-af">Abrir AnderFlow <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13m-5-5 5 5-5 5"/></svg></a>
           <a href="#sites" class="btn-p"><i class="fas fa-rocket"></i> Ver projetos</a>
           <a href="#contato" class="btn-o">Fale comigo</a>
         </div>
