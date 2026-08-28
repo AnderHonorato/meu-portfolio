@@ -279,6 +279,13 @@ a, button, li, .projeto-item, .item-formacao, input, textarea, select {
     border-left: 4px solid #e74c3c;
 }
 
+/* Oficina Editorial — entrada para os cases de identidade, sem substituir os projetos digitais do portfólio. */
+.identidades-destaque { margin: 2.5rem 0; padding: 2rem; border-left: 4px solid #245c63; background: linear-gradient(135deg, rgba(36,92,99,.12), rgba(255,255,255,.35)); }
+.identidades-destaque h2 { margin-bottom: .7rem; color: #245c63; }
+.identidades-destaque p { max-width: 58rem; margin-bottom: 1.2rem; line-height: 1.6; }
+.identidades-destaque .btn-projeto { display: inline-block; background: #245c63; color: #fff; }
+@media (max-width: 600px) { .identidades-destaque { padding: 1.25rem; margin: 1.75rem 0; } .identidades-destaque h2 { font-size: 1.35rem; } }
+
 .projetos-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
