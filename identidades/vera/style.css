@@ -7,3 +7,14 @@
 .portfolio-highlight a{color:#fff;border-bottom:1px solid rgba(255,255,255,.55);font-size:10px}
 .hero-visual img,.application-showcase img,.proof-grid img{background:var(--cream)}
 @media(max-width:620px){.portfolio-highlight .shell{min-height:46px;justify-content:space-between;gap:8px;flex-wrap:wrap;padding:7px 0}.portfolio-highlight> .shell > span:nth-child(2){display:none}.portfolio-highlight-label{font-size:9px}.portfolio-highlight a{font-size:9px}.site-header{top:0}.hero-visual img{object-fit:cover}.pdf-frame iframe{background:#292624}}
+
+/* Os materiais originais do manual são 1448x1086 (proporção 4:3). Preserve a obra inteira. */
+.hero-visual{padding-left:20px}
+.hero-visual img{height:auto;aspect-ratio:4/3;object-fit:contain;border-radius:0}
+.hero-visual{overflow:visible}
+.application-showcase{aspect-ratio:4/3}
+.application-showcase img{height:100%;aspect-ratio:4/3;object-fit:contain;background:#211f1d}
+.proof-grid figure{height:auto;aspect-ratio:4/3}
+.proof-grid img{height:100%;object-fit:contain;background:#f4ede4}
+@media(max-width:900px){.hero-visual{padding-left:8px}.hero-visual img{height:auto}.application-showcase{aspect-ratio:4/3}.application-showcase img{height:100%}.proof-grid figure{height:auto}}
+@media(max-width:620px){.hero-visual img{height:auto}.application-showcase{aspect-ratio:4/3}.application-showcase img{aspect-ratio:4/3;height:100%;object-fit:contain}.proof-grid figure{height:auto;aspect-ratio:4/3}.proof-grid img{height:100%;object-fit:contain}}
