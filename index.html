@@ -533,6 +533,13 @@ img{max-width:100%;display:block}
   .sobre-cards{grid-template-columns:1fr}
   .t-btn{width:24px;height:24px;font-size:.65rem}
 }
+
+/* Cartões de projetos com identidade própria, sem alterar o portfólio legado. */
+.cartao-astro-atualizado::after,.cartao-utilitarios-atualizado::after{content:'';position:absolute;right:-24px;top:-25px;width:100px;height:100px;border:1px dashed #897cc677;border-radius:50%;pointer-events:none;transition:transform .4s}
+.cartao-utilitarios-atualizado::after{border-radius:18px;border-color:#b58a6480;transform:rotate(18deg)}
+.cartao-astro-atualizado:hover::after{transform:scale(1.12) rotate(25deg)}
+.cartao-utilitarios-atualizado:hover::after{transform:rotate(-7deg) translate(-6px,6px)}
+@media(prefers-reduced-motion:reduce){.cartao-astro-atualizado::after,.cartao-utilitarios-atualizado::after{transition:none}}
 </style>
 <style>
 /* Oficina Editorial — chamada de identidades na home, voltada a clientes e não apenas a desenvolvedores. */
@@ -693,6 +700,22 @@ img{max-width:100%;display:block}
     <div class="s-label">Portfólio</div>
     <h2 class="s-title">Sites &amp; Sistemas <span>Criados</span></h2>
     <div class="sites-g">
+      <div class="s-card reveal cartao-astro-atualizado" style="border-top:3px solid #897cc6;position:relative;overflow:hidden">
+        <div class="s-hd"><div class="s-badge" style="background:#554b87">GitHub Pages</div><span class="s-ico" aria-hidden="true">◌</span></div>
+        <div class="s-body">
+          <div class="s-tags"><span class="s-tag">Astronomia</span><span class="s-tag">Estudos</span><span class="s-tag">Web</span></div>
+          <h3>Astro Flow</h3><p>Experiência de exploração astrológica com visual editorial e ferramentas interativas.</p>
+          <div class="s-acts"><a href="https://anderhonorato.github.io/Astro-Flow/" target="_blank" rel="noopener noreferrer" class="s-b s-b-p">Visitar site ↗</a></div>
+        </div>
+      </div>
+      <div class="s-card reveal cartao-utilitarios-atualizado" style="border-top:3px solid #b58a64;position:relative;overflow:hidden">
+        <div class="s-hd"><div class="s-badge" style="background:#796041">GitHub Pages</div><span class="s-ico" aria-hidden="true">▦</span></div>
+        <div class="s-body">
+          <div class="s-tags"><span class="s-tag">Ferramentas</span><span class="s-tag">Produtividade</span><span class="s-tag">Web</span></div>
+          <h3>Ferramentas do Ander</h3><p>Catálogo de utilitários digitais com pesquisa, histórico e organização por categorias.</p>
+          <div class="s-acts"><a href="https://anderhonorato.github.io/Site-de-Renda-Passiva/portal/" target="_blank" rel="noopener noreferrer" class="s-b s-b-p">Abrir ferramentas ↗</a></div>
+        </div>
+      </div>
       <div class="s-card pf c-p reveal">
         <div class="s-hd"><div class="s-badge">Site ao vivo</div><span class="s-ico">🐾</span></div>
         <div class="s-body">
